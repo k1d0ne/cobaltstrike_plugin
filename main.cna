@@ -1,0 +1,6 @@
+popup beacon_bottom {
+    menu "内网渗透"{
+		include(script_resource("modules/Sunlogin.cna"));
+	
+    }
+}
