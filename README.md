@@ -5,6 +5,9 @@
 
 # 功能简介
 sunlogin 向日葵识别码和密文的读取(老版本和新版本都可)
+teamviewer 抓取ID和密码
+
+向日葵，teamviewer，Todesk的应用弹起到桌面并保存截图
 
 # 测试截图
 向日葵信息读取测试截图
